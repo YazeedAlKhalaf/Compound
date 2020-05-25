@@ -14,6 +14,9 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Compound',
+      theme: ThemeData(
+        fontFamily: 'Open Sans',
+      ),
       initialRoute: Routes.startupViewRoute,
       onGenerateRoute: Router().onGenerateRoute,
       navigatorKey: locator<NavigationService>().navigatorKey,

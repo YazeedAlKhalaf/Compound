@@ -14,12 +14,20 @@ class StartupViewModel extends BaseViewModel {
         seconds: 1,
       ),
       () async {
-        await navigateToHomeView();
+        await navigateToLoginView();
       },
     );
   }
 
   Future navigateToHomeView() async {
     await _navigationService.pushNamedAndRemoveUntil(Routes.homeViewRoute);
+  }
+
+  Future navigateToSignUpView() async {
+    await _navigationService.pushNamedAndRemoveUntil(Routes.signUpViewRoute);
+  }
+
+  Future navigateToLoginView() async {
+    await _navigationService.pushNamedAndRemoveUntil(Routes.loginViewRoute);
   }
 }

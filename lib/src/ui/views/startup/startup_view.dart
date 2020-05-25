@@ -18,6 +18,8 @@ class StartupView extends StatelessWidget {
           child: Scaffold(
             body: Center(
               child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
                   // TODO(yazeed): add logo here
 

@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "1054527367891",
+    "firebase_url": "https://compound-yazeedalkhalaf.firebaseio.com",
+    "project_id": "compound-yazeedalkhalaf",
+    "storage_bucket": "compound-yazeedalkhalaf.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1054527367891:android:a5ede4748fc06e2f170226",
+        "android_client_info": {
+          "package_name": "dev.alkhalaf.compound"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1054527367891-uvr260pa3olk2bapc6ape50b6066ile2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAyzQDYbcJY-x6GFzLZ6IqjxLKks3UqveY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1054527367891-uvr260pa3olk2bapc6ape50b6066ile2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

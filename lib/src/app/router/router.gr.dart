@@ -9,13 +9,19 @@ import 'package:flutter/cupertino.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:compound/src/ui/views/startup/startup_view.dart';
 import 'package:compound/src/ui/views/home/home_view.dart';
+import 'package:compound/src/ui/views/login/login_view.dart';
+import 'package:compound/src/ui/views/signup/signup_view.dart';
 
 abstract class Routes {
   static const startupViewRoute = '/';
   static const homeViewRoute = '/home-view-route';
+  static const loginViewRoute = '/login-view-route';
+  static const signUpViewRoute = '/sign-up-view-route';
   static const all = {
     startupViewRoute,
     homeViewRoute,
+    loginViewRoute,
+    signUpViewRoute,
   };
 }
 
@@ -38,6 +44,16 @@ class Router extends RouterBase {
       case Routes.homeViewRoute:
         return MaterialPageRoute<dynamic>(
           builder: (context) => HomeView(),
+          settings: settings,
+        );
+      case Routes.loginViewRoute:
+        return MaterialPageRoute<dynamic>(
+          builder: (context) => LoginView(),
+          settings: settings,
+        );
+      case Routes.signUpViewRoute:
+        return MaterialPageRoute<dynamic>(
+          builder: (context) => SignUpView(),
           settings: settings,
         );
       default:

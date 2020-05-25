@@ -22,6 +22,8 @@ dependencies:
   flutter_spinkit: ^4.1.2+1
   # logger
   logger: ^0.9.1
+  # firebase auth
+  firebase_auth: ^0.16.0
 
 dev_dependencies:
   flutter_test:
@@ -33,3 +35,18 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+
+  assets:
+    - assets/images/
+
+  fonts:
+    - family: Open Sans
+      fonts:
+        - asset: assets/fonts/OpenSans-Bold.ttf
+          weight: 700
+        - asset: assets/fonts/OpenSans-ExtraBold.ttf
+          weight: 800
+        - asset: assets/fonts/OpenSans-Light.ttf
+          weight: 300
+        - asset: assets/fonts/OpenSans-Regular.ttf
+          weight: 400

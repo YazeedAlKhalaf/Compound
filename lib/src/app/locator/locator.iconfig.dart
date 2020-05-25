@@ -5,11 +5,14 @@
 // **************************************************************************
 
 import 'package:compound/src/app/services/third_party_services_module.dart';
+import 'package:compound/src/app/services/authentication_service.dart';
 import 'package:stacked_services/stacked_services.dart';
 import 'package:get_it/get_it.dart';
 
 void $initGetIt(GetIt g, {String environment}) {
   final thirdPartyServicesModule = _$ThirdPartyServicesModule();
+  g.registerLazySingleton<AuthenticationService>(
+      () => thirdPartyServicesModule.authenticationService);
   g.registerLazySingleton<DialogService>(
       () => thirdPartyServicesModule.dialogService);
   g.registerLazySingleton<NavigationService>(
@@ -19,6 +22,8 @@ void $initGetIt(GetIt g, {String environment}) {
 }
 
 class _$ThirdPartyServicesModule extends ThirdPartyServicesModule {
+  @override
+  AuthenticationService get authenticationService => AuthenticationService();
   @override
   DialogService get dialogService => DialogService();
   @override
