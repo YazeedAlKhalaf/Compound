@@ -1,3 +1,4 @@
+import 'package:compound/src/ui/global/app_colors.dart';
 import 'package:compound/src/ui/global/ui_helpers.dart';
 import 'package:flutter/material.dart';
 import 'package:compound/src/ui/views/startup/startup_viewmodel.dart';
@@ -29,7 +30,11 @@ class StartupView extends StatelessWidget {
                     ),
                   ),
                   verticalSpaceMedium(context),
-                  CircularProgressIndicator(),
+                  CircularProgressIndicator(
+                    valueColor: AlwaysStoppedAnimation(
+                      primaryColor,
+                    ),
+                  ),
                 ],
               ),
             ),

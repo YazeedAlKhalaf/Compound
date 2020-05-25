@@ -1,18 +1,11 @@
 import 'dart:async';
 
-import 'package:compound/src/app/locator/locator.dart';
 import 'package:compound/src/app/router/router.gr.dart';
-import 'package:compound/src/app/services/authentication_service.dart';
-import 'package:stacked/stacked.dart';
-import 'package:stacked_services/stacked_services.dart';
+import 'package:compound/src/ui/global/custom_base_view_model.dart';
 
-class StartupViewModel extends BaseViewModel {
-  final AuthenticationService _authenticationService =
-      locator<AuthenticationService>();
-  final NavigationService _navigationService = locator<NavigationService>();
-
+class StartupViewModel extends CustomBaseViewModel {
   Future handleStartup() async {
-    var isUserLoggedIn = await _authenticationService.isUserLoggedIn();
+    var isUserLoggedIn = await authenticationService.isUserLoggedIn();
 
     if (isUserLoggedIn) {
       await navigateToHomeView();
@@ -22,14 +15,14 @@ class StartupViewModel extends BaseViewModel {
   }
 
   Future navigateToHomeView() async {
-    await _navigationService.pushNamedAndRemoveUntil(Routes.homeViewRoute);
+    await navigationService.pushNamedAndRemoveUntil(Routes.homeViewRoute);
   }
 
   Future navigateToSignUpView() async {
-    await _navigationService.pushNamedAndRemoveUntil(Routes.signUpViewRoute);
+    await navigationService.pushNamedAndRemoveUntil(Routes.signUpViewRoute);
   }
 
   Future navigateToLoginView() async {
-    await _navigationService.pushNamedAndRemoveUntil(Routes.loginViewRoute);
+    await navigationService.pushNamedAndRemoveUntil(Routes.loginViewRoute);
   }
 }

@@ -11,17 +11,21 @@ import 'package:compound/src/ui/views/startup/startup_view.dart';
 import 'package:compound/src/ui/views/home/home_view.dart';
 import 'package:compound/src/ui/views/login/login_view.dart';
 import 'package:compound/src/ui/views/signup/signup_view.dart';
+import 'package:compound/src/ui/views/create_post/create_post_view.dart';
+import 'package:compound/src/app/models/post.dart';
 
 abstract class Routes {
   static const startupViewRoute = '/';
   static const homeViewRoute = '/home-view-route';
   static const loginViewRoute = '/login-view-route';
   static const signUpViewRoute = '/sign-up-view-route';
+  static const createPostViewRoute = '/create-post-view-route';
   static const all = {
     startupViewRoute,
     homeViewRoute,
     loginViewRoute,
     signUpViewRoute,
+    createPostViewRoute,
   };
 }
 
@@ -35,6 +39,7 @@ class Router extends RouterBase {
 
   @override
   Route<dynamic> onGenerateRoute(RouteSettings settings) {
+    final args = settings.arguments;
     switch (settings.name) {
       case Routes.startupViewRoute:
         return MaterialPageRoute<dynamic>(
@@ -56,8 +61,29 @@ class Router extends RouterBase {
           builder: (context) => SignUpView(),
           settings: settings,
         );
+      case Routes.createPostViewRoute:
+        if (hasInvalidArgs<CreatePostViewArguments>(args)) {
+          return misTypedArgsRoute<CreatePostViewArguments>(args);
+        }
+        final typedArgs =
+            args as CreatePostViewArguments ?? CreatePostViewArguments();
+        return MaterialPageRoute<dynamic>(
+          builder: (context) =>
+              CreatePostView(editingPost: typedArgs.editingPost),
+          settings: settings,
+        );
       default:
         return unknownRoutePage(settings.name);
     }
   }
+}
+
+// *************************************************************************
+// Arguments holder classes
+// **************************************************************************
+
+//CreatePostView arguments holder class
+class CreatePostViewArguments {
+  final Post editingPost;
+  CreatePostViewArguments({this.editingPost});
 }

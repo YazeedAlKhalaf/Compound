@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route_annotations.dart';
+import 'package:compound/src/ui/views/create_post/create_post_view.dart';
 import 'package:compound/src/ui/views/home/home_view.dart';
 import 'package:compound/src/ui/views/login/login_view.dart';
 import 'package:compound/src/ui/views/signup/signup_view.dart';
@@ -11,4 +12,5 @@ class $Router {
   HomeView homeViewRoute;
   LoginView loginViewRoute;
   SignUpView signUpViewRoute;
+  CreatePostView createPostViewRoute;
 }
