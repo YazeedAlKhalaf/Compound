@@ -40,4 +40,8 @@ class LoginViewModel extends BaseViewModel {
 
     setBusy(false);
   }
+
+  Future navigateToSignupView() async {
+    await _navigationService.pushNamedAndRemoveUntil(Routes.signUpViewRoute);
+  }
 }

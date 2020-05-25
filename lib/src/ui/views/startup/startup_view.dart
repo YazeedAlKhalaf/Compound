@@ -1,3 +1,4 @@
+import 'package:compound/src/ui/global/ui_helpers.dart';
 import 'package:flutter/material.dart';
 import 'package:compound/src/ui/views/startup/startup_viewmodel.dart';
 import 'package:compound/src/ui/widgets/dumb/busy_overlay.dart';
@@ -21,8 +22,13 @@ class StartupView extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
-                  // TODO(yazeed): add logo here
-
+                  ClipOval(
+                    child: Image.asset(
+                      'assets/images/icon_large.png',
+                      width: blockSizeHorizontal(context) * 35,
+                    ),
+                  ),
+                  verticalSpaceMedium(context),
                   CircularProgressIndicator(),
                 ],
               ),

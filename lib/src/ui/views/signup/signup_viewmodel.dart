@@ -12,12 +12,14 @@ class SignUpViewModel extends BaseViewModel {
   final DialogService _dialogService = locator<DialogService>();
 
   Future signUp({
+    @required String fullName,
     @required String email,
-    @required password,
+    @required String password,
   }) async {
     setBusy(true);
 
     var result = await _authenticationService.signUpWithEmail(
+      fullName: fullName,
       email: email,
       password: password,
     );
@@ -39,5 +41,9 @@ class SignUpViewModel extends BaseViewModel {
     }
 
     setBusy(false);
+  }
+
+  Future navigateToLoginView() async {
+    await _navigationService.pushNamedAndRemoveUntil(Routes.loginViewRoute);
   }
 }

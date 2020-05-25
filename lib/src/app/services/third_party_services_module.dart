@@ -1,4 +1,5 @@
 import 'package:compound/src/app/services/authentication_service.dart';
+import 'package:compound/src/app/services/firestore_service.dart';
 import 'package:injectable/injectable.dart';
 import 'package:stacked_services/stacked_services.dart';
 
@@ -12,4 +13,6 @@ abstract class ThirdPartyServicesModule {
   SnackbarService get snackBarService;
   @lazySingleton
   AuthenticationService get authenticationService;
+  @lazySingleton
+  FirestoreService get firestoreService;
 }

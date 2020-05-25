@@ -23,59 +23,64 @@ class LoginView extends StatelessWidget {
         return BusyOverlay(
           show: model.isBusy,
           child: Scaffold(
-              backgroundColor: Colors.white,
-              body: Padding(
-                padding: EdgeInsets.symmetric(
-                  horizontal: blockSizeHorizontal(context) * 5,
-                ),
-                child: Column(
-                  mainAxisSize: MainAxisSize.max,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: <Widget>[
-                    SizedBox(
-                      height: blockSizeHorizontal(context) * 35,
-                      child: Image.asset(
-                        'assets/images/title.png',
-                      ),
-                    ),
-                    InputField(
-                      placeholder: 'Email',
-                      controller: emailController,
-                    ),
-                    verticalSpaceSmall(context),
-                    InputField(
-                      placeholder: 'Password',
-                      password: true,
-                      controller: passwordController,
-                    ),
-                    verticalSpaceMedium(context),
-                    Row(
-                      mainAxisSize: MainAxisSize.max,
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
-                        RoundedButton(
-                          text: 'Login',
-                          onPressed: () async {
-                            await model.login(
-                              email: emailController.text,
-                              password: passwordController.text,
-                            );
-                          },
-                          fontSize: blockSizeHorizontal(context) * 5,
+            backgroundColor: Colors.white,
+            body: Padding(
+              padding: EdgeInsets.symmetric(
+                horizontal: blockSizeHorizontal(context) * 5,
+              ),
+              child: Center(
+                child: SingleChildScrollView(
+                  child: Column(
+                    mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: <Widget>[
+                      SizedBox(
+                        height: blockSizeHorizontal(context) * 35,
+                        child: Image.asset(
+                          'assets/images/title.png',
                         ),
-                      ],
-                    ),
-                    verticalSpaceMedium(context),
-                    TextLink(
-                      'Create an Account if you\'re new.',
-                      onPressed: () {
-                        // TODO: Handle navigation
-                      },
-                    )
-                  ],
+                      ),
+                      InputField(
+                        placeholder: 'Email',
+                        controller: emailController,
+                      ),
+                      verticalSpaceSmall(context),
+                      InputField(
+                        placeholder: 'Password',
+                        password: true,
+                        controller: passwordController,
+                      ),
+                      verticalSpaceMedium(context),
+                      Row(
+                        mainAxisSize: MainAxisSize.max,
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          RoundedButton(
+                            text: 'Login',
+                            onPressed: () async {
+                              await model.login(
+                                email: emailController.text,
+                                password: passwordController.text,
+                              );
+                            },
+                            fontSize: blockSizeHorizontal(context) * 5,
+                          ),
+                        ],
+                      ),
+                      verticalSpaceMedium(context),
+                      TextLink(
+                        'Create an Account if you\'re new.',
+                        onPressed: () async {
+                          await model.navigateToSignupView();
+                        },
+                      ),
+                    ],
+                  ),
                 ),
-              )),
+              ),
+            ),
+          ),
         );
       },
     );
