@@ -22,14 +22,19 @@ dependencies:
   flutter_spinkit: ^4.1.2+1
   # logger
   logger: ^0.9.1
+  # image picker
+  image_picker: ^0.6.6+4
+  # cached network image
+  cached_network_image: ^2.2.0+1
+
+  # Firebase Related Stuff
   firebase_auth: ^0.16.0
   cloud_firestore: ^0.13.5
   firebase_storage: ^3.1.6
-  image_picker: ^0.6.6+4
-  cached_network_image: ^2.2.0+1
   firebase_messaging: ^6.0.16
   firebase_analytics: ^5.0.14
   firebase_dynamic_links: ^0.5.1
+  firebase_remote_config: ^0.3.1
 
 dev_dependencies:
   flutter_test:

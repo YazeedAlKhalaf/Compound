@@ -5,7 +5,9 @@ import 'package:compound/src/app/models/cloud_storage_result.dart';
 import 'package:compound/src/app/services/authentication_service.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/foundation.dart';
+import 'package:injectable/injectable.dart';
 
+@lazySingleton
 class CloudStorageService {
   final AuthenticationService _authenticationService =
       locator<AuthenticationService>();

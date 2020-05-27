@@ -7,6 +7,8 @@ class StartupViewModel extends CustomBaseViewModel {
   Future handleStartup() async {
     // Handle Dynamic Links
     await dynamicLinkService.handleDynamicLinks();
+    // Handle Remote Config
+    await remoteConfigService.initialize();
     // Handle Push Notifications
     await pushNotificationService.initialize();
 

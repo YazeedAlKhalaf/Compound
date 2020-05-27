@@ -5,7 +5,12 @@ import 'package:compound/src/app/router/router.gr.dart';
 import 'package:stacked_services/stacked_services.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  // Register all the models and services before the app starts
   setupLocator();
+
+  // Runs the app :)
   runApp(MyApp());
 }
 

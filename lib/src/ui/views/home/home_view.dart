@@ -49,6 +49,48 @@ class HomeView extends StatelessWidget {
                       ),
                     ],
                   ),
+                  if (model.showMainBanner)
+                    Container(
+                      height: blockSizeHorizontal(context) * 30,
+                      width: double.infinity,
+                      padding: EdgeInsets.all(
+                        blockSizeHorizontal(context),
+                      ),
+                      child: Card(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(
+                            20,
+                          ),
+                        ),
+                        color: primaryColor,
+                        child: Center(
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: <Widget>[
+                              Text(
+                                'Android ONLY Banner',
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  color: textColorWhite,
+                                  fontSize: blockSizeHorizontal(context) * 6,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              verticalSpaceSmall(context),
+                              Text(
+                                'HINT: Uses Remote Config :)',
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  color: textColorWhite,
+                                  fontSize: blockSizeHorizontal(context) * 3.5,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
                   Expanded(
                     child: model.posts != null
                         ? ListView.builder(
@@ -85,25 +127,6 @@ class HomeView extends StatelessWidget {
                 ],
               ),
             ),
-            // body: Center(
-            //   child: Column(
-            //     mainAxisAlignment: MainAxisAlignment.center,
-            //     crossAxisAlignment: CrossAxisAlignment.center,
-            //     children: <Widget>[
-            //       Text(
-            //         'Home View',
-            //       ),
-            //       RoundedButton(
-            //         isBusy: model.isBusy,
-            //         text: 'Sign Out',
-            //         fontSize: blockSizeHorizontal(context) * 4,
-            //         onPressed: () async {
-            //           await model.signOut();
-            //         },
-            //       ),
-            //     ],
-            //   ),
-            // ),
             floatingActionButton: FloatingActionButton(
               backgroundColor: primaryColor,
               child: Icon(

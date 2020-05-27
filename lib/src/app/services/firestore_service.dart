@@ -4,7 +4,9 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:compound/src/app/models/post.dart';
 import 'package:compound/src/app/models/user.dart';
 import 'package:flutter/services.dart';
+import 'package:injectable/injectable.dart';
 
+@lazySingleton
 class FirestoreService {
   final CollectionReference _usersCollectionReference =
       Firestore.instance.collection('users');

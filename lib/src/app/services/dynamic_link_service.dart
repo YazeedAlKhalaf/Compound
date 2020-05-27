@@ -4,7 +4,9 @@ import 'package:compound/src/app/router/router.gr.dart';
 import 'package:compound/src/app/services/authentication_service.dart';
 import 'package:firebase_dynamic_links/firebase_dynamic_links.dart';
 import 'package:stacked_services/stacked_services.dart';
+import 'package:injectable/injectable.dart';
 
+@lazySingleton
 class DynamicLinkService {
   final NavigationService _navigationService = locator<NavigationService>();
   final AuthenticationService _authenticationService =
