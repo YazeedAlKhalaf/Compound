@@ -62,6 +62,8 @@ class HomeViewModel extends CustomBaseViewModel {
     ;
   }
 
+  void requestMoreData() => firestoreService.requestMoreData();
+
   Future<void> signOut() async {
     setBusy(true);
     await authenticationService.signOut();

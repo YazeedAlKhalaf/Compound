@@ -1,7 +1,7 @@
 import 'package:compound/src/ui/global/app_colors.dart';
 import 'package:compound/src/ui/global/ui_helpers.dart';
+import 'package:compound/src/ui/widgets/dumb/creation_aware_list_item.dart';
 import 'package:compound/src/ui/widgets/dumb/post_item.dart';
-import 'package:compound/src/ui/widgets/dumb/rounded_button.dart';
 import 'package:flutter/material.dart';
 import 'package:compound/src/ui/views/home/home_viewmodel.dart';
 import 'package:compound/src/ui/widgets/dumb/busy_overlay.dart';
@@ -45,15 +45,22 @@ class HomeView extends StatelessWidget {
                         ? ListView.builder(
                             itemCount: model.posts.length ?? 0,
                             itemBuilder: (BuildContext context, int index) {
-                              return GestureDetector(
-                                onTap: () async {
-                                  await model.editPost(index);
+                              return CreationAwareListItem(
+                                itemCreated: () {
+                                  if (index % 5 == 0) {
+                                    model.requestMoreData();
+                                  }
                                 },
-                                child: PostItem(
-                                  post: model.posts[index],
-                                  onDeleteItem: () async {
-                                    await model.deletePost(index);
+                                child: GestureDetector(
+                                  onTap: () async {
+                                    await model.editPost(index);
                                   },
+                                  child: PostItem(
+                                    post: model.posts[index],
+                                    onDeleteItem: () async {
+                                      await model.deletePost(index);
+                                    },
+                                  ),
                                 ),
                               );
                             },

@@ -14,6 +14,11 @@ class FirestoreService {
   final StreamController _postsController =
       StreamController<List<Post>>.broadcast();
 
+  DocumentSnapshot _lastDocumentSnapshot;
+  // Paged Structure
+  List<List<Post>> _allPagedResults = List<List<Post>>();
+  bool _hasMorePosts = true;
+
   Future createUser(User user) async {
     try {
       await _usersCollectionReference.document(user.id).setData(
@@ -74,7 +79,22 @@ class FirestoreService {
   }
 
   Stream listenToPostsRealTime() {
-    _postsCollectionReference.snapshots().listen((postsSnapshot) {
+    _requestPosts();
+    return _postsController.stream;
+  }
+
+  void _requestPosts() {
+    var pagePostsQuery = _postsCollectionReference.orderBy('title').limit(20);
+
+    if (_lastDocumentSnapshot != null) {
+      pagePostsQuery = pagePostsQuery.startAfterDocument(_lastDocumentSnapshot);
+    }
+
+    if (!_hasMorePosts) return;
+
+    var currentRequestIndex = _allPagedResults.length;
+
+    pagePostsQuery.snapshots().listen((postsSnapshot) {
       if (postsSnapshot.documents.isNotEmpty) {
         var posts = postsSnapshot.documents
             .map(
@@ -84,11 +104,36 @@ class FirestoreService {
               (mappedPost) => mappedPost.title != null,
             )
             .toList();
+
+        // Does the page exist or not
+        var pageExists = currentRequestIndex < _allPagedResults.length;
+
+        // If the page exists update the values to the new posts
+        if (pageExists) {
+          _allPagedResults[currentRequestIndex] = posts;
+        }
+        // If the page doesn't exist add the page data
+        else {
+          _allPagedResults.add(posts);
+        }
+
+        var allPosts = _allPagedResults.fold<List<Post>>(
+          List<Post>(),
+          (initialValue, pageItems) => initialValue..addAll(pageItems),
+        );
+
+        // Broadcast all posts in the page structure
         _postsController.add(posts);
+
+        // Save the last document form the results. ONLY if it's the current last page
+        if (currentRequestIndex == _allPagedResults.length - 1) {
+          _lastDocumentSnapshot = postsSnapshot.documents.last;
+        }
+
+        // Determine if there's more posts to request
+        _hasMorePosts = posts.length == 5;
       }
     });
-
-    return _postsController.stream;
   }
 
   Future deletePost(String documentId) async {
@@ -107,4 +152,6 @@ class FirestoreService {
       return e.toString();
     }
   }
+
+  void requestMoreData() => _requestPosts();
 }

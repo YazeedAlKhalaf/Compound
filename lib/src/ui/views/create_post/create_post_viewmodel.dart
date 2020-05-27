@@ -75,7 +75,7 @@ class CreatePostViewModel extends CustomBaseViewModel {
         title: 'Post Successfully Added',
         description: 'Your post has been created!',
       );
-      await navigationService.pushNamedAndRemoveUntil(Routes.homeViewRoute);
+      navigationService.popRepeated(1);
     }
 
     setBusy(false);
