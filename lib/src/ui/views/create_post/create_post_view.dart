@@ -74,22 +74,29 @@ class CreatePostView extends StatelessWidget {
                     'Post Image',
                   ),
                   verticalSpaceSmall(context),
-                  Container(
-                    height: 250,
-                    decoration: BoxDecoration(
-                      color: Colors.grey[200],
-                      borderRadius: BorderRadius.circular(
-                        10,
+                  GestureDetector(
+                    onTap: () async {
+                      await model.selectImage();
+                    },
+                    child: Container(
+                      height: 250,
+                      decoration: BoxDecoration(
+                        color: Colors.grey[200],
+                        borderRadius: BorderRadius.circular(
+                          10,
+                        ),
                       ),
+                      alignment: Alignment.center,
+                      child: model.selectedImage != null
+                          ? Image.file(model.selectedImage)
+                          : Text(
+                              'Tap to add post image',
+                              style: TextStyle(
+                                color: Colors.grey[400],
+                              ),
+                            ),
                     ),
-                    alignment: Alignment.center,
-                    child: Text(
-                      'Tap to add post image',
-                      style: TextStyle(
-                        color: Colors.grey[400],
-                      ),
-                    ),
-                  )
+                  ),
                 ],
               ),
             ),

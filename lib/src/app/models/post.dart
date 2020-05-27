@@ -5,12 +5,16 @@ class Post {
   final String imageUrl;
   final String userId;
   final String documentId;
+  final String imageFileName;
+  final String imageFilePath;
 
   Post({
     @required this.title,
     this.imageUrl,
     @required this.userId,
     this.documentId,
+    this.imageFileName,
+    this.imageFilePath,
   });
 
   Map<String, dynamic> toJson() {
@@ -18,6 +22,8 @@ class Post {
       'userId': userId,
       'imageUrl': imageUrl,
       'title': title,
+      'imageFileName': imageFileName,
+      'imageFilePath': imageFilePath,
     };
   }
 
@@ -29,6 +35,8 @@ class Post {
       imageUrl: json['imageUrl'],
       userId: json['userId'],
       documentId: documentId,
+      imageFileName: json['imageFileName'],
+      imageFilePath: json['imageFilePath'],
     );
   }
 }

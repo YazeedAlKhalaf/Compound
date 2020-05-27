@@ -34,7 +34,9 @@ class HomeViewModel extends CustomBaseViewModel {
     );
 
     if (dialogResponse.confirmed) {
-      await firestoreService.deletePost(_posts[index].documentId);
+      Post postToDelete = _posts[index];
+      await firestoreService.deletePost(postToDelete.documentId);
+      await cloudStorageService.deleteImage(postToDelete.imageFilePath);
     }
 
     setBusy(false);
