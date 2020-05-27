@@ -10,6 +10,7 @@ import 'package:compound/src/app/services/cloud_storage_service.dart';
 import 'package:stacked_services/stacked_services.dart';
 import 'package:compound/src/app/services/firestore_service.dart';
 import 'package:compound/src/app/utils/image_selector.dart';
+import 'package:compound/src/app/services/push_notification_service.dart';
 import 'package:get_it/get_it.dart';
 
 void $initGetIt(GetIt g, {String environment}) {
@@ -26,6 +27,8 @@ void $initGetIt(GetIt g, {String environment}) {
       () => thirdPartyServicesModule.imageSelector);
   g.registerLazySingleton<NavigationService>(
       () => thirdPartyServicesModule.navigationService);
+  g.registerLazySingleton<PushNotificationService>(
+      () => thirdPartyServicesModule.pushNotificationService);
   g.registerLazySingleton<SnackbarService>(
       () => thirdPartyServicesModule.snackBarService);
 }
@@ -43,6 +46,9 @@ class _$ThirdPartyServicesModule extends ThirdPartyServicesModule {
   ImageSelector get imageSelector => ImageSelector();
   @override
   NavigationService get navigationService => NavigationService();
+  @override
+  PushNotificationService get pushNotificationService =>
+      PushNotificationService();
   @override
   SnackbarService get snackBarService => SnackbarService();
 }

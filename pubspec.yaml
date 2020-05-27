@@ -27,6 +27,7 @@ dependencies:
   firebase_storage: ^3.1.6
   image_picker: ^0.6.6+4
   cached_network_image: ^2.2.0+1
+  firebase_messaging: ^6.0.16
 
 dev_dependencies:
   flutter_test:

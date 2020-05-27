@@ -5,6 +5,8 @@ import 'package:compound/src/ui/global/custom_base_view_model.dart';
 
 class StartupViewModel extends CustomBaseViewModel {
   Future handleStartup() async {
+    await pushNotificationService.initialize();
+
     var isUserLoggedIn = await authenticationService.isUserLoggedIn();
 
     if (isUserLoggedIn) {
