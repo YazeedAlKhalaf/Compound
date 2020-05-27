@@ -5,6 +5,7 @@
 // **************************************************************************
 
 import 'package:compound/src/app/services/third_party_services_module.dart';
+import 'package:compound/src/app/services/analytics_service.dart';
 import 'package:compound/src/app/services/authentication_service.dart';
 import 'package:compound/src/app/services/cloud_storage_service.dart';
 import 'package:stacked_services/stacked_services.dart';
@@ -15,6 +16,8 @@ import 'package:get_it/get_it.dart';
 
 void $initGetIt(GetIt g, {String environment}) {
   final thirdPartyServicesModule = _$ThirdPartyServicesModule();
+  g.registerLazySingleton<AnalyticsService>(
+      () => thirdPartyServicesModule.analyticsService);
   g.registerLazySingleton<AuthenticationService>(
       () => thirdPartyServicesModule.authenticationService);
   g.registerLazySingleton<CloudStorageService>(
@@ -34,6 +37,8 @@ void $initGetIt(GetIt g, {String environment}) {
 }
 
 class _$ThirdPartyServicesModule extends ThirdPartyServicesModule {
+  @override
+  AnalyticsService get analyticsService => AnalyticsService();
   @override
   AuthenticationService get authenticationService => AuthenticationService();
   @override

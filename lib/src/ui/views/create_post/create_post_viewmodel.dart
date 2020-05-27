@@ -68,6 +68,9 @@ class CreatePostViewModel extends CustomBaseViewModel {
         description: result,
       );
     } else {
+      await analyticsService.logPostCreated(
+        hasImage: _selectedImage != null,
+      );
       await dialogService.showDialog(
         title: 'Post Successfully Added',
         description: 'Your post has been created!',

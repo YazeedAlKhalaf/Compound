@@ -1,5 +1,6 @@
 import 'package:compound/src/app/locator/locator.dart';
 import 'package:compound/src/app/models/user.dart';
+import 'package:compound/src/app/services/analytics_service.dart';
 import 'package:compound/src/app/services/firestore_service.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
@@ -7,6 +8,7 @@ import 'package:flutter/foundation.dart';
 class AuthenticationService {
   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
   final FirestoreService _firestoreService = locator<FirestoreService>();
+  final AnalyticsService _analyticsService = locator<AnalyticsService>();
 
   User _currentUser;
   User get currentUser => _currentUser;
@@ -47,6 +49,7 @@ class AuthenticationService {
       );
 
       await _firestoreService.createUser(_currentUser);
+      await _analyticsService.setUserProperties(userId: authResult.user.uid);
 
       return authResult.user != null;
     } catch (e) {
@@ -64,6 +67,7 @@ class AuthenticationService {
   _populateCurrentUser(FirebaseUser user) async {
     if (user != null) {
       _currentUser = await _firestoreService.getUser(user.uid);
+      await _analyticsService.setUserProperties(userId: user.uid);
     }
   }
 

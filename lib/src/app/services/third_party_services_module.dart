@@ -1,3 +1,4 @@
+import 'package:compound/src/app/services/analytics_service.dart';
 import 'package:compound/src/app/services/authentication_service.dart';
 import 'package:compound/src/app/services/cloud_storage_service.dart';
 import 'package:compound/src/app/services/firestore_service.dart';
@@ -24,4 +25,6 @@ abstract class ThirdPartyServicesModule {
   ImageSelector get imageSelector;
   @lazySingleton
   PushNotificationService get pushNotificationService;
+  @lazySingleton
+  AnalyticsService get analyticsService;
 }

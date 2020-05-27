@@ -1,7 +1,7 @@
 import 'package:compound/src/app/models/post.dart';
 import 'package:compound/src/ui/global/app_colors.dart';
 import 'package:compound/src/ui/global/ui_helpers.dart';
-import 'package:compound/src/ui/views/create_post/create_post_view_model.dart';
+import 'package:compound/src/ui/views/create_post/create_post_viewmodel.dart';
 import 'package:compound/src/ui/widgets/dumb/input_field.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';

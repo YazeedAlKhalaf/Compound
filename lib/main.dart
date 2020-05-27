@@ -1,3 +1,4 @@
+import 'package:compound/src/app/services/analytics_service.dart';
 import 'package:flutter/material.dart';
 import 'package:compound/src/app/locator/locator.dart';
 import 'package:compound/src/app/router/router.gr.dart';
@@ -20,6 +21,9 @@ class MyApp extends StatelessWidget {
       initialRoute: Routes.startupViewRoute,
       onGenerateRoute: Router().onGenerateRoute,
       navigatorKey: locator<NavigationService>().navigatorKey,
+      navigatorObservers: [
+        locator<AnalyticsService>().getAnalyticsObserver(),
+      ],
     );
   }
 }

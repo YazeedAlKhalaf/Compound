@@ -16,7 +16,8 @@ class LoginViewModel extends CustomBaseViewModel {
 
     if (result is bool) {
       if (result) {
-        navigationService.pushNamedAndRemoveUntil(Routes.homeViewRoute);
+        await analyticsService.logLogin();
+        await navigationService.pushNamedAndRemoveUntil(Routes.homeViewRoute);
       } else {
         await dialogService.showDialog(
           title: 'Login Failure',

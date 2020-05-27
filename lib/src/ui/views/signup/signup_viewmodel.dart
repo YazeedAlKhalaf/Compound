@@ -18,7 +18,8 @@ class SignUpViewModel extends CustomBaseViewModel {
 
     if (result is bool) {
       if (result) {
-        navigationService.pushNamedAndRemoveUntil(Routes.homeViewRoute);
+        await analyticsService.logSignUp();
+        await navigationService.pushNamedAndRemoveUntil(Routes.homeViewRoute);
       } else {
         await dialogService.showDialog(
           title: 'Sign Up Failure',

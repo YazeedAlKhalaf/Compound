@@ -28,6 +28,7 @@ dependencies:
   image_picker: ^0.6.6+4
   cached_network_image: ^2.2.0+1
   firebase_messaging: ^6.0.16
+  firebase_analytics: ^5.0.14
 
 dev_dependencies:
   flutter_test:
