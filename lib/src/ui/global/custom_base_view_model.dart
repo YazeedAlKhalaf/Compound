@@ -3,6 +3,7 @@ import 'package:compound/src/app/models/user.dart';
 import 'package:compound/src/app/services/analytics_service.dart';
 import 'package:compound/src/app/services/authentication_service.dart';
 import 'package:compound/src/app/services/cloud_storage_service.dart';
+import 'package:compound/src/app/services/dynamic_link_service.dart';
 import 'package:compound/src/app/services/firestore_service.dart';
 import 'package:compound/src/app/services/push_notification_service.dart';
 import 'package:compound/src/app/utils/image_selector.dart';
@@ -21,6 +22,7 @@ abstract class CustomBaseViewModel extends BaseViewModel {
   final PushNotificationService pushNotificationService =
       locator<PushNotificationService>();
   final AnalyticsService analyticsService = locator<AnalyticsService>();
+  final DynamicLinkService dynamicLinkService = locator<DynamicLinkService>();
 
   User get currentUser => authenticationService.currentUser;
 }

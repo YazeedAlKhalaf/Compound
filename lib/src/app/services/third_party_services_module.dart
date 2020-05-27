@@ -1,6 +1,7 @@
 import 'package:compound/src/app/services/analytics_service.dart';
 import 'package:compound/src/app/services/authentication_service.dart';
 import 'package:compound/src/app/services/cloud_storage_service.dart';
+import 'package:compound/src/app/services/dynamic_link_service.dart';
 import 'package:compound/src/app/services/firestore_service.dart';
 import 'package:compound/src/app/services/push_notification_service.dart';
 import 'package:compound/src/app/utils/image_selector.dart';
@@ -27,4 +28,6 @@ abstract class ThirdPartyServicesModule {
   PushNotificationService get pushNotificationService;
   @lazySingleton
   AnalyticsService get analyticsService;
+  @lazySingleton
+  DynamicLinkService get dynamicLinkService;
 }

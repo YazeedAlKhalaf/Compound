@@ -68,8 +68,8 @@ class Router extends RouterBase {
         final typedArgs =
             args as CreatePostViewArguments ?? CreatePostViewArguments();
         return MaterialPageRoute<dynamic>(
-          builder: (context) =>
-              CreatePostView(editingPost: typedArgs.editingPost),
+          builder: (context) => CreatePostView(
+              editingPost: typedArgs.editingPost, newPost: typedArgs.newPost),
           settings: settings,
         );
       default:
@@ -85,5 +85,6 @@ class Router extends RouterBase {
 //CreatePostView arguments holder class
 class CreatePostViewArguments {
   final Post editingPost;
-  CreatePostViewArguments({this.editingPost});
+  final Post newPost;
+  CreatePostViewArguments({this.editingPost, this.newPost});
 }

@@ -2,6 +2,7 @@ import 'package:compound/src/ui/global/app_colors.dart';
 import 'package:compound/src/ui/global/ui_helpers.dart';
 import 'package:compound/src/ui/widgets/dumb/creation_aware_list_item.dart';
 import 'package:compound/src/ui/widgets/dumb/post_item.dart';
+import 'package:compound/src/ui/widgets/dumb/rounded_button.dart';
 import 'package:flutter/material.dart';
 import 'package:compound/src/ui/views/home/home_viewmodel.dart';
 import 'package:compound/src/ui/widgets/dumb/busy_overlay.dart';
@@ -31,12 +32,20 @@ class HomeView extends StatelessWidget {
                 children: <Widget>[
                   verticalSpaceMedium(context),
                   Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: <Widget>[
                       SizedBox(
                         height: blockSizeHorizontal(context) * 8,
                         child: Image.asset(
                           'assets/images/title.png',
                         ),
+                      ),
+                      RoundedButton(
+                        text: 'Sign Out',
+                        onPressed: () async {
+                          await model.signOut();
+                        },
+                        fontSize: blockSizeHorizontal(context) * 4,
                       ),
                     ],
                   ),

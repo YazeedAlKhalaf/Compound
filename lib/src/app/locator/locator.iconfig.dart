@@ -9,6 +9,7 @@ import 'package:compound/src/app/services/analytics_service.dart';
 import 'package:compound/src/app/services/authentication_service.dart';
 import 'package:compound/src/app/services/cloud_storage_service.dart';
 import 'package:stacked_services/stacked_services.dart';
+import 'package:compound/src/app/services/dynamic_link_service.dart';
 import 'package:compound/src/app/services/firestore_service.dart';
 import 'package:compound/src/app/utils/image_selector.dart';
 import 'package:compound/src/app/services/push_notification_service.dart';
@@ -24,6 +25,8 @@ void $initGetIt(GetIt g, {String environment}) {
       () => thirdPartyServicesModule.cloudStorageService);
   g.registerLazySingleton<DialogService>(
       () => thirdPartyServicesModule.dialogService);
+  g.registerLazySingleton<DynamicLinkService>(
+      () => thirdPartyServicesModule.dynamicLinkService);
   g.registerLazySingleton<FirestoreService>(
       () => thirdPartyServicesModule.firestoreService);
   g.registerLazySingleton<ImageSelector>(
@@ -45,6 +48,8 @@ class _$ThirdPartyServicesModule extends ThirdPartyServicesModule {
   CloudStorageService get cloudStorageService => CloudStorageService();
   @override
   DialogService get dialogService => DialogService();
+  @override
+  DynamicLinkService get dynamicLinkService => DynamicLinkService();
   @override
   FirestoreService get firestoreService => FirestoreService();
   @override

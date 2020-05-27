@@ -8,8 +8,10 @@ import 'package:stacked/stacked.dart';
 
 class CreatePostView extends StatelessWidget {
   final Post editingPost;
+  final Post newPost;
   CreatePostView({
     this.editingPost,
+    this.newPost,
   });
 
   final TextEditingController titleController = TextEditingController();
@@ -19,9 +21,17 @@ class CreatePostView extends StatelessWidget {
     return ViewModelBuilder.reactive(
       viewModelBuilder: () => CreatePostViewModel(),
       onModelReady: (CreatePostViewModel model) {
-        if (editingPost != null) {
+        if (editingPost != null && newPost == null) {
           titleController.text = editingPost.title ?? '';
           model.setEditingPost(editingPost);
+        }
+
+        if (newPost != null && editingPost == null) {
+          titleController.text = newPost.title ?? '';
+        }
+
+        if (newPost != null && editingPost != null) {
+          model.error();
         }
       },
       builder: (
