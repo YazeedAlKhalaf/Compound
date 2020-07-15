@@ -1,5 +1,5 @@
 name: compound
-description: A new Flutter project.
+description: A Flutter app that utilizes most Firebase Services.
 version: 1.0.0+1
 
 environment:
