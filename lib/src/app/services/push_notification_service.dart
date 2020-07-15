@@ -36,7 +36,7 @@ class PushNotificationService {
     if (view != null) {
       switch (view) {
         case 'create_post':
-          _navigationService.navigateTo(Routes.createPostViewRoute);
+          _navigationService.navigateTo(Routes.createPostView);
           break;
         default:
       }

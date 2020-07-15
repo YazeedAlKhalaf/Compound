@@ -22,14 +22,14 @@ class StartupViewModel extends CustomBaseViewModel {
   }
 
   Future navigateToHomeView() async {
-    await navigationService.pushNamedAndRemoveUntil(Routes.homeViewRoute);
+    await navigationService.pushNamedAndRemoveUntil(Routes.homeView);
   }
 
   Future navigateToSignUpView() async {
-    await navigationService.pushNamedAndRemoveUntil(Routes.signUpViewRoute);
+    await navigationService.pushNamedAndRemoveUntil(Routes.signUpView);
   }
 
   Future navigateToLoginView() async {
-    await navigationService.pushNamedAndRemoveUntil(Routes.loginViewRoute);
+    await navigationService.pushNamedAndRemoveUntil(Routes.loginView);
   }
 }

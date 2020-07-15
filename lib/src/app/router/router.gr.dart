@@ -14,68 +14,68 @@ import 'package:compound/src/ui/views/signup/signup_view.dart';
 import 'package:compound/src/ui/views/create_post/create_post_view.dart';
 import 'package:compound/src/app/models/post.dart';
 
-abstract class Routes {
-  static const startupViewRoute = '/';
-  static const homeViewRoute = '/home-view-route';
-  static const loginViewRoute = '/login-view-route';
-  static const signUpViewRoute = '/sign-up-view-route';
-  static const createPostViewRoute = '/create-post-view-route';
-  static const all = {
-    startupViewRoute,
-    homeViewRoute,
-    loginViewRoute,
-    signUpViewRoute,
-    createPostViewRoute,
+class Routes {
+  static const String startupView = '/';
+  static const String homeView = '/home-view';
+  static const String loginView = '/login-view';
+  static const String signUpView = '/sign-up-view';
+  static const String createPostView = '/create-post-view';
+  static const all = <String>{
+    startupView,
+    homeView,
+    loginView,
+    signUpView,
+    createPostView,
   };
 }
 
 class Router extends RouterBase {
   @override
-  Set<String> get allRoutes => Routes.all;
-
-  @Deprecated('call ExtendedNavigator.ofRouter<Router>() directly')
-  static ExtendedNavigatorState get navigator =>
-      ExtendedNavigator.ofRouter<Router>();
-
+  List<RouteDef> get routes => _routes;
+  final _routes = <RouteDef>[
+    RouteDef(Routes.startupView, page: StartupView),
+    RouteDef(Routes.homeView, page: HomeView),
+    RouteDef(Routes.loginView, page: LoginView),
+    RouteDef(Routes.signUpView, page: SignUpView),
+    RouteDef(Routes.createPostView, page: CreatePostView),
+  ];
   @override
-  Route<dynamic> onGenerateRoute(RouteSettings settings) {
-    final args = settings.arguments;
-    switch (settings.name) {
-      case Routes.startupViewRoute:
-        return MaterialPageRoute<dynamic>(
-          builder: (context) => StartupView(),
-          settings: settings,
-        );
-      case Routes.homeViewRoute:
-        return MaterialPageRoute<dynamic>(
-          builder: (context) => HomeView(),
-          settings: settings,
-        );
-      case Routes.loginViewRoute:
-        return MaterialPageRoute<dynamic>(
-          builder: (context) => LoginView(),
-          settings: settings,
-        );
-      case Routes.signUpViewRoute:
-        return MaterialPageRoute<dynamic>(
-          builder: (context) => SignUpView(),
-          settings: settings,
-        );
-      case Routes.createPostViewRoute:
-        if (hasInvalidArgs<CreatePostViewArguments>(args)) {
-          return misTypedArgsRoute<CreatePostViewArguments>(args);
-        }
-        final typedArgs =
-            args as CreatePostViewArguments ?? CreatePostViewArguments();
-        return MaterialPageRoute<dynamic>(
-          builder: (context) => CreatePostView(
-              editingPost: typedArgs.editingPost, newPost: typedArgs.newPost),
-          settings: settings,
-        );
-      default:
-        return unknownRoutePage(settings.name);
-    }
-  }
+  Map<Type, AutoRouteFactory> get pagesMap => _pagesMap;
+  final _pagesMap = <Type, AutoRouteFactory>{
+    StartupView: (RouteData data) {
+      return MaterialPageRoute<dynamic>(
+        builder: (context) => StartupView(),
+        settings: data,
+      );
+    },
+    HomeView: (RouteData data) {
+      return MaterialPageRoute<dynamic>(
+        builder: (context) => HomeView(),
+        settings: data,
+      );
+    },
+    LoginView: (RouteData data) {
+      return MaterialPageRoute<dynamic>(
+        builder: (context) => LoginView(),
+        settings: data,
+      );
+    },
+    SignUpView: (RouteData data) {
+      return MaterialPageRoute<dynamic>(
+        builder: (context) => SignUpView(),
+        settings: data,
+      );
+    },
+    CreatePostView: (RouteData data) {
+      var args = data.getArgs<CreatePostViewArguments>(
+          orElse: () => CreatePostViewArguments());
+      return MaterialPageRoute<dynamic>(
+        builder: (context) => CreatePostView(
+            editingPost: args.editingPost, newPost: args.newPost),
+        settings: data,
+      );
+    },
+  };
 }
 
 // *************************************************************************

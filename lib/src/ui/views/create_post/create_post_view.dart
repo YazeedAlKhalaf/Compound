@@ -31,7 +31,7 @@ class CreatePostView extends StatelessWidget {
         }
 
         if (newPost != null && editingPost != null) {
-          model.error();
+          model.somethingWentWrong();
         }
       },
       builder: (

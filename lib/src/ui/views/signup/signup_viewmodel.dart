@@ -19,7 +19,7 @@ class SignUpViewModel extends CustomBaseViewModel {
     if (result is bool) {
       if (result) {
         await analyticsService.logSignUp();
-        await navigationService.pushNamedAndRemoveUntil(Routes.homeViewRoute);
+        await navigationService.pushNamedAndRemoveUntil(Routes.homeView);
       } else {
         await dialogService.showDialog(
           title: 'Sign Up Failure',
@@ -37,6 +37,6 @@ class SignUpViewModel extends CustomBaseViewModel {
   }
 
   Future navigateToLoginView() async {
-    await navigationService.pushNamedAndRemoveUntil(Routes.loginViewRoute);
+    await navigationService.pushNamedAndRemoveUntil(Routes.loginView);
   }
 }

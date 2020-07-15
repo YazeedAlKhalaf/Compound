@@ -53,11 +53,11 @@ class HomeViewModel extends CustomBaseViewModel {
   Future navigateToCreatePostView({Object arguments}) async {
     arguments != null
         ? await navigationService.navigateTo(
-            Routes.createPostViewRoute,
+            Routes.createPostView,
             arguments: arguments,
           )
         : await navigationService.navigateTo(
-            Routes.createPostViewRoute,
+            Routes.createPostView,
           );
     ;
   }
@@ -67,6 +67,6 @@ class HomeViewModel extends CustomBaseViewModel {
   Future<void> signOut() async {
     setBusy(true);
     await authenticationService.signOut();
-    await navigationService.pushNamedAndRemoveUntil(Routes.signUpViewRoute);
+    await navigationService.pushNamedAndRemoveUntil(Routes.signUpView);
   }
 }

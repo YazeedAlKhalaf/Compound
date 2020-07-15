@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         fontFamily: 'Open Sans',
       ),
-      initialRoute: Routes.startupViewRoute,
+      initialRoute: Routes.startupView,
       onGenerateRoute: Router().onGenerateRoute,
       navigatorKey: locator<NavigationService>().navigatorKey,
       navigatorObservers: [

@@ -65,7 +65,7 @@ class DynamicLinkService {
         if (title != null) {
           // Navigate To Create Post View
           _navigationService.navigateTo(
-            Routes.createPostViewRoute,
+            Routes.createPostView,
             arguments: CreatePostViewArguments(
               newPost: Post(
                 title: title,

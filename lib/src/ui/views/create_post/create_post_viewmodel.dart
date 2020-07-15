@@ -85,11 +85,11 @@ class CreatePostViewModel extends CustomBaseViewModel {
     _editingPost = editingPost;
   }
 
-  void error() async {
+  void somethingWentWrong() async {
     await dialogService.showDialog(
       title: 'Something Went Wrong!',
       description: 'Something went wrong! Please try again later :)',
     );
-    navigationService.pushNamedAndRemoveUntil(Routes.homeViewRoute);
+    navigationService.pushNamedAndRemoveUntil(Routes.homeView);
   }
 }
